@@ -28,9 +28,11 @@ BEGIN {
 }
 END {
     print "Total LoC: " final;
-    for(x in lang){
+    for (x in lang) {
         c = (total[x]/final)*100;
-        print lang[x], total[x], c "%";
+		if (lang[x] != "Founddocumentation_url" || lang[x] != "message") {
+        	print lang[x], total[x], c "%";
+		}
     }
 }
 ' clean

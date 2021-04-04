@@ -1,0 +1,24 @@
+#!/bin/bash
+# it works so don't touch it
+# also it's so badly written it randomly breaks
+
+printf 'Enter which Github user you would like to check percentages on: '
+read -r GHUSER
+
+http https://api.github.com/users/$GHUSER/repos$CMD | python -m json.tool | egrep '"name"|"fork"' > list
+
+touch lang
+cat list | sed '/true/,+1d' | grep '"name"' | awk -F: '{print $0}' | tr -d '{' | tr -d '}' | tr -d '"' |sort | grep -v '^$'  | sed 's/^.*name://gi' | tr -d ',' >> repos
+for i in $(cat repos); do echo '' >> lang && http https://api.github.com/repos/$GHUSER/$i/languages$CMD >> lang; done;
+awk -F, '{print $0}' lang | tr -d '{' | tr -d '}' | tr -d '"'| tr ' ' '\n' |sort | grep -v '^$' | tr -d ',' >> preclean
+cat preclean | perl -pe "s/(\d+|\d)([A-Za-z])/\1\n\2/gi" | grep -v 'HTML'| grep -v 'CSS' | sort >> clean
+
+bash tottals.awk
+bash output.awk > loc.csv
+
+rm -rf list 
+rm -rf repos
+rm -rf lang
+rm -rf clean
+rm -rf preclean
+rm -rf loc.csv
