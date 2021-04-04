@@ -1,5 +1,0 @@
-locs <- read.csv('locusertwo.csv', header=TRUE, sep=",")
-png("loclarge.png")
-plot(locs)
-title(main = commandArgs(TRUE)[1])
-dev.off()
