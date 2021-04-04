@@ -1,3 +1,4 @@
 # ignore token and swaps
 token
 *.swp
+*~
