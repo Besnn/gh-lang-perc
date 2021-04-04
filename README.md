@@ -18,3 +18,4 @@ R 1926 0.673135%
 Shell 6775 2.36785%
 VimL 934 0.326432%
 ```
+Use a Github App Token and put it in a file called `token`.
