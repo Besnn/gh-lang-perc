@@ -1,4 +1,3 @@
-# github-lang
 Get language usage statistics on a github user.
 Does not count forked projects.
 Does not count HTML or CSS as a language.
@@ -19,4 +18,3 @@ R 1926 0.673135%
 Shell 6775 2.36785%
 VimL 934 0.326432%
 ```
-Breaks when rate limit is reached (once very ?)
