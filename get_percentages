@@ -1,6 +1,10 @@
 #!/bin/bash
 # it works so don't touch it
 # also it's so badly written it randomly breaks
+# solution: token (because of rate limit)
+
+GTOKEN=$(cat token)
+CMD="?access_token=$GTOKEN"
 
 printf 'Enter which Github user you would like to check percentages on: '
 read -r GHUSER
